@@ -1,0 +1,13 @@
+{
+  "name": "Timer new tab page",
+  "description": "Override the new tab page with a task and timer",
+  "version": "0.0",
+  "incognito": "split",
+  "chrome_url_overrides": {
+    "newtab": "timer.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "manifest_version": 2
+}

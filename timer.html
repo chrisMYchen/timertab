@@ -1,0 +1,261 @@
+<html>
+ <head>
+  <title>Timer Tab</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style>
+
+  .container{
+    font-family:'Roboto';
+    width:600px; 
+    text-align: center;
+    margin:30px auto 0; 
+    display:block; 
+    background:#FFF;
+    padding: 5px 50px 50px;
+  }
+
+  #taskname {
+    font-size:48px;
+    color: #5264AE;
+  }
+  #clockdiv{
+    font-family: sans-serif;
+    color: #5264AE;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #fff;
+    display: inline-block;
+  }
+
+  #clockdiv div > span{
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff;
+    border: 2px solid #5264AE;
+    display: inline-block;
+  }
+
+  .smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+  }
+
+  #form {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+.normal-input	{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; border: none;}
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+.center{
+  text-align:center;
+  margin:auto;
+}
+
+.small {
+  width: 300px;
+  margin:auto;
+}
+
+#mission {
+  width:100%;
+  overflow:auto;
+  border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;
+  color: #5264AE;
+  font-size: 36px;
+}
+
+.form__wrapper--submit {
+	padding: 1.6rem 0;
+}
+.btn {
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 3px;
+	background-color: #5264AE;
+	color: #fff;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+
+	font-family: inherit;
+	font-weight: 400;
+	font-size: 24px;
+
+	box-shadow: 
+		0 1px 3px 0 rgba(0, 0, 0, 0.24), 
+		0 1px 2px 0 rgba(0, 0, 0, 0.12);
+
+	transition: all 0.2s ease;
+}
+
+.btn:focus, .btn:hover {
+  background-color: rgb(50, 61, 105);
+}
+
+.btn .btn-block {
+		width: 100%;
+		display: block;
+	}
+
+#miniclock .days {
+  font-size:48px;
+}
+
+  </style>
+ </head>
+ <body>
+  <div class="minicontainer">
+    <div id="minitaskname"> end of school </div>
+    <div id="miniclock">
+      <span class="days">00</span><span class="dot">.</span> <span class="decimal">0000000000</span>
+    </div>
+  </div>
+  <div class="container">
+      <div id="taskname" >My Task</div>
+      <div id="clockdiv">
+        <div>
+          <span class="days">0</span>
+          <div class="smalltext">Days</div>
+        </div>
+        <div>
+          <span class="hours">0</span>
+          <div class="smalltext">Hours</div>
+        </div>
+        <div>
+          <span class="minutes">0</span>
+          <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+          <span class="seconds">0</span>
+          <div class="smalltext">Seconds</div>
+        </div>
+      </div>
+      <div class="small">
+        <form id="form">
+            <div class="group">      
+                <input id ="tasktext" class="center normal-input" type="text" required>
+                <span class="highlight center"></span>
+                <span class="bar center"></span>
+                <label class="center" >Name</label>
+            </div>
+            <div class="group">      
+                <input id="minutes" class="center normal-input" type="text" required>
+                <span class="highlight center"></span>
+                <span class="bar center"></span>
+                <label class="center" >Minutes</label>
+            </div>
+            
+            <div class="form__wrapper--submit">
+              <div class="form__input-submit">
+                  <button type="submit" name="submit" class="btn btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+      </div>   
+      <div class="big">
+        <input id="mission" class="center" type="text" placeholder="How am I going to win today?">
+      </div> 
+  </div>
+  
+ </body>
+<script src="timer.js"></script>
+</html>
+
