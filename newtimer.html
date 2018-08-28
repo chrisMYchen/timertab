@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <title>Timer Tab</title>
+  <script src="jquery.js"></script>
+  <script src="jquery.onepage-scroll.js"></script>
+  <link rel="stylesheet" href="onepage-scroll.css">
+  <script src="moment-with-locales.js"></script>
+  <script src="moment-timezone-with-data.min.js"></script>
+  <script src="jquery.countdown.min.js"></script>
+  <link  href="datepicker.css" rel="stylesheet">
+  <script src="datepicker.js"></script>
+  <link rel="stylesheet" href="timer.css">
+</head>
+
+<body>
+  <div class="main">
+    <section class="page page1">
+      <div class="page-content">
+        <div class="title">
+          <div class="date">
+            <span id="month">Today</span>
+            <span id="day">.</span>
+          </div>
+        </div>
+        <div class="subtitle">
+            <input id="mission" class="clean-input" type="text" placeholder="What's today's win?">
+        </div>
+        <div id="longTimerDate" class="subtitle" data-countdown="2019/01/01">0 days</div>
+        <div id="longTimerTitle">new year</div>
+      </div>
+      <div class="fancy-rectangle grey-border"> </div>
+      <div class="fancy-rectangle black-border"> </div>
+    </section>
+    <section class="page page2">
+        <div class="page-content">
+          <div class="title">Timer.</div>
+          <div class="subtitle">
+              <input id="task" class="clean-input" type="text" placeholder="My task">
+          </div>
+          <div id="taskTimerDate" class="subtitle" data-countdown="2019/01/01">0 days</div>
+        <form id="task-form">
+            <input name="time" class="clean-input" type="text" placeholder="X minutes">
+            <button type="submit" name="submit" class="btn btn-block">Submit</button>
+        </form>
+        </div>
+        <div class="fancy-rectangle grey-border"> </div>
+        <div class="fancy-rectangle black-border"> </div>
+      </section>
+    <section class="page page3">
+      <div class="page-content">
+      <form id="config">
+          <div class="title">Config.</div>
+          <div>
+          <input name="longTimerTitle" type="text" placeholder="Long timer title">
+        </div>
+      </br>
+        <div>
+          <input name="longTimerDate" data-toggle="datepicker" placeholder="Long timer date">
+        </div>
+      </br>
+          <button type="submit" name="submit" class="btn btn-block">Submit</button>
+      </form>
+      </div>
+      <div class="fancy-rectangle grey-border"> </div>
+      <div class="fancy-rectangle black-border"> </div>
+    </section>
+  </div>
+
+</body>
+<script src="activatescroll.js"></script>
+<script src="newtimer.js"></script>
+
+</html>

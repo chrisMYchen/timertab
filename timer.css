@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Futura;
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Futura-Medium.woff') format(woff);
+}
+
+@font-face {
+    font-family: Futura;
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Futura-MediumItalic.woff') format(woff);
+    font-style: italic;
+}
+input, select, textarea, button{font-family:inherit; font-size:inherit;}
+body {
+    font-size: 62.5%;
+}
+.title {
+    font-size:3.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+.main section {
+    overflow: hidden;
+    font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+}
+
+.page-content {
+    position:absolute;
+    top: 239px;
+    left: 213px;
+}
+
+.fancy-rectangle {
+    height: 40vh;
+    width: 150vw;
+    transform: rotate(130deg);
+    background: rgba(255, 255, 255, 0);
+}
+
+.grey-border {
+    position: absolute;
+    left: 7.5vw;
+    top:0vh;
+    border: 30px solid #C7C7C7;
+}
+
+.black-border{
+    position: absolute;
+    left: 5vw;
+    top: 0vh;
+    border: 30px solid #2B2B2B;
+}
+
+.clean-input {
+  width:100%;
+  overflow:auto;
+  border: 0; padding: 7px 0;
+}

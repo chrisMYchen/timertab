@@ -4,10 +4,11 @@
   "version": "0.0",
   "incognito": "split",
   "chrome_url_overrides": {
-    "newtab": "timer.html"
+    "newtab": "newtimer.html"
   },
   "permissions": [
     "storage"
   ],
-  "manifest_version": 2
+  "manifest_version": 2,
+  "web_accessible_resources": ["fonts/*.*"]
 }

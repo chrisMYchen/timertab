@@ -48,8 +48,8 @@
     var decimalSpan = clock.querySelector('.decimal');
     if (days <= 0) {
       clearInterval(timeinterval);
-      var audio = new Audio('tuturu_1.mp3');
-      audio.play();
+      // var audio = new Audio('tuturu_1.mp3');
+      // audio.play();
       daysSpan.innerHTML = '0';
       decimalSpan.innerHTML = '00000000000';
     }
@@ -100,7 +100,7 @@
         }
     });
 
-    initializeMiniClock("miniclock", new Date('May 11, 2018 12:00:00'));
+    initializeMiniClock("miniclock", new Date('May 23, 2018 23:59:00'));
 
     chrome.storage.sync.get(['mission'], function(result) {
       var missionText = result.mission;
