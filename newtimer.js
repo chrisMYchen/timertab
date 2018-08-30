@@ -3,6 +3,8 @@ const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
 ];
 
 $(function () {
+    var audio = new Audio('silence.mp3');
+    audio.play();
     var tz = moment.tz.guess();
     var dateObj = moment().tz(tz);
     var month = dateObj.month(); //months from 1-12    
@@ -29,11 +31,11 @@ $(function () {
     chrome.storage.sync.get(['taskTimerDate'], function (result) {
         var taskTimerDate = result.taskTimerDate;
         var date = moment(taskTimerDate);
-        console.log('retrieved!', taskTimerDate);
         if (taskTimerDate != null) {
-            console.log('0');
-            var $taskTimerDate = $('#taskTimerDate');
-            $($taskTimerDate).countdown(date.toDate());
+            if (date > moment()) {
+                var $taskTimerDate = $('#taskTimerDate');
+                $($taskTimerDate).countdown(date.toDate());
+            }
         }
     });
 
@@ -46,9 +48,7 @@ $(function () {
 
     chrome.storage.sync.get(['longTimerDate'], function (result) {
         var longTimerDate = result.longTimerDate;
-        console.log('retrieved!', longTimerDate);
         if (longTimerDate != null) {
-            console.log('0');
             var $date = $('#longTimerDate');
             $($date).countdown(longTimerDate);
         }
@@ -58,31 +58,25 @@ $(function () {
 $("#task-form").submit(function (event) {
     event.preventDefault();
     var mins = $('#task-form :input[name=time]').val();
-    console.log(mins);
     var tz = moment.tz.guess();
     var d1 = moment().tz(tz);
     d2 = moment(d1).add(mins, 'minutes');
     var date = d2.toDate();
     var dateString = date.toString()
-    console.log(date);
     chrome.storage.sync.set({'taskTimerDate': dateString }, () => {
         if (mins != null) {
-            console.log(mins);
             var $taskTimerDate = $('#taskTimerDate');
             $($taskTimerDate).countdown(date);
         }
     });
 })
 $("#config").submit(function (event) {
-    console.log("ok config submit");
     event.preventDefault();
     var $inputs = $('#config :input');
     $inputs.each(function () {
         var val = $(this).val();
         var name = this.name;
-        console.log(name, val);
         chrome.storage.sync.set({ [name]: val }, () => {
-            console.log(name);
             if (name == 'longTimerDate') {
                 if (val != null) {
                     $longTimerDate = $('#longTimerDate');
@@ -117,6 +111,8 @@ $('[data-countdown]').each(function () {
     $this.countdown(finalDate, function (event) {
         $this.html(event.strftime('%D d %H h %M m %S s'));
     }).on('finish.countdown', function(event){
+        var audio = new Audio('tuturu_1.mp3');
+        audio.play();
         $(this).html('END').parent().addClass('disabled');
     });
 });
